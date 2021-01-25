@@ -1,0 +1,13 @@
+<% provide(:title, "Login") %>
+<h1> Log in </h1>
+
+<%= form_tag sessions_path do |form| %>
+  <%= label_tag :login %>
+  <%= text_field_tag :login, nil, placeholder: 'login'%>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password, nil, placeholder: "password" %>
+
+  <%= submit_tag "Login" %>
+
+<% end %>

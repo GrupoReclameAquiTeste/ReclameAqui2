@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @reclamacao.titulo %>
+</p>
+
+<p>
+  <strong>Texto:</strong>
+  <%= @reclamacao.texto %>
+</p>
+
+<p>
+  <strong>Categoria problema:</strong>
+  <%= @reclamacao.categoria_problema %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @reclamacao.empresa %>
+</p>
+
+<%= link_to 'Editar', edit_reclamacao_path(@reclamacao) %> |
+<%= link_to 'Voltar', reclamacaos_path %>
+<% if (logged_in? and @reclamacao.usuario_id == current_user.id) %>
+  | <td><%= link_to 'Deletar', @reclamacao, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+<% end %> |
+<%= link_to 'Home', '/' %>

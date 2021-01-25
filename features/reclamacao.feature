@@ -1,0 +1,30 @@
+Feature: Reclamacao
+  As an usuario do sistema ReclameAqui
+  I want to criar, editar e remover uma reclamacao
+  so that eu nao tenha que fazer isso manualmente
+
+  Scenario: Adicionar reclamacao
+    Given Eu estou logado
+    And Eu estou na pagina de nova reclamacao
+    When preencho titulo com "Item danificado", texto com "Quero trocar o item que comprei, mas a loja nao responde", categoria_problema com "produto danificado" e seleciona a empresa "Empresa3"
+    And clico em criar reclamacao
+
+  Scenario: Remover reclamacao
+    Given Eu estou logado
+    And Eu estou na pagina de reclamacoes
+    And vejo a reclamacao de titulo "Item danificado" ja existente
+    When eu clico em deletar
+    Then vejo que nao existe a reclamacao de titulo "Item danificado"
+
+  Scenario: Adicionar reclamacao invalida
+    Given Eu estou logado
+    And Eu estou na pagina de nova reclamacao
+    When preencho titulo com "", texto com "", categoria_problema com "produto danificado" e seleciona a empresa "Empresa3"
+    And clico em criar reclamacao
+    Then vejo as mensagens de restricao para titulo e texto
+
+  Scenario: Editar uma reclamacao que eu nao criei
+    Given Eu estou logado
+    And Eu estou na pagina de reclamacoes
+    When eu vejo a reclamacao de titulo "Item danificado"
+    And clico em editar a reclamacao de titulo "Item danificado"

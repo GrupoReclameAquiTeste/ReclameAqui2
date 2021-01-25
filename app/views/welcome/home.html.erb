@@ -1,0 +1,12 @@
+<h1>Reclame aqui</h1>
+<ul>
+  <li> <%= link_to "Reclamacaos", reclamacaos_path %> </li>
+  <br>
+  <% if logged_in? %>
+    <%= button_to "Logout", sessions_path, method: :delete, id: 'logout' %>
+    <%= link_to "Editar minha conta", edit_usuario_path(current_user), id: 'editar_conta' %>
+  <% else %>
+    <%= link_to "Criar conta", signup_path, id: 'criar_conta' %> |
+    <%= link_to "Entrar", login_path, method: :get %>
+  <% end %>
+</ul>
